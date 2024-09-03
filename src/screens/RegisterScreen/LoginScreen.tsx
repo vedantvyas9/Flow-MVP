@@ -3,8 +3,11 @@ import {Text, View, TextInput, TouchableOpacity, Image} from 'react-native';
 import BaseRegisterScreen from './BaseRegisterScreen';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {createScreenProps} from '../../navigation/utils';
 
-function LoginScreen(): React.JSX.Element {
+const LoginScreenProps = createScreenProps('LoginScreen');
+
+const LoginScreen: React.FC<typeof LoginScreenProps> = ({navigation}) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   return (
     <BaseRegisterScreen>
@@ -50,14 +53,14 @@ function LoginScreen(): React.JSX.Element {
         <Text className="text-center text-white font-sans text-lg">Login</Text>
       </TouchableOpacity>
       <View className="flex-1 justify-end items-center">
-        <TouchableOpacity>
-          <Text className="text-blue-500 mb-4">
-            <Text className="text-white mb-4 font-sans">
-              Create New Account?{' '}
-            </Text>
+        <Text className="text-white mb-4">
+          Create New Account?{' '}
+          <Text
+            className="text-blue-500 mb-4 font-sans"
+            onPress={() => navigation.navigate('EmailRegisterScreen')}>
             Sign up
           </Text>
-        </TouchableOpacity>
+        </Text>
         <View className="border-b border-gray-500 w-full mb-4" />
         <TouchableOpacity className="items-center">
           <Text className="text-white font-sans">Continue with Google</Text>
@@ -69,6 +72,6 @@ function LoginScreen(): React.JSX.Element {
       </View>
     </BaseRegisterScreen>
   );
-}
+};
 
 export default LoginScreen;

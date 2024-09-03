@@ -35,7 +35,7 @@ function WelcomeScreen({
       <View className="flex-grow" />
       <TouchableOpacity
         className="mb-8 bg-blue-600 bg-opacity-20 rounded-full w-64 py-3"
-        onPress={() => navigation.navigate('RegisterScreen')}>
+        onPress={() => navigation.navigate('LoginScreen')}>
         <Text className="text-white text-center font-sans text-lg">
           Get Started
         </Text>

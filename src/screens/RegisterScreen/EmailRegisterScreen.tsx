@@ -3,14 +3,21 @@ import {Text, View, TextInput, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import BaseRegisterScreen from './BaseRegisterScreen';
+import {createScreenProps} from '../../navigation/utils';
 
-function EmailRegisterScreen(): React.JSX.Element {
+const EmailRegisterScreenProps = createScreenProps('EmailRegisterScreen');
+
+const EmailRegisterScreen: React.FC<typeof EmailRegisterScreenProps> = ({
+  navigation,
+}) => {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const isFormValid = fullName && email && password;
+  const isFormValid = fullName && email && password && confirmPassword;
 
   return (
     <BaseRegisterScreen>
@@ -59,20 +66,41 @@ function EmailRegisterScreen(): React.JSX.Element {
         </TouchableOpacity>
       </View>
 
+      <View className="flex-row items-center bg-[#2b2b2b] mt-4 p-5 rounded-xl">
+        <Icon name="lock-outline" size={24} color="#fff" />
+        <TextInput
+          className="ml-2 flex-1 text-white font-sans"
+          placeholder="Confirm Password"
+          placeholderTextColor="#aaa"
+          secureTextEntry={!showConfirmPassword}
+          value={confirmPassword}
+          onChangeText={setConfirmPassword}
+        />
+        <TouchableOpacity
+          onPress={() => setShowConfirmPassword(!showConfirmPassword)}>
+          <Icon
+            name={showConfirmPassword ? 'visibility' : 'visibility-off'}
+            size={24}
+            color="#fff"
+          />
+        </TouchableOpacity>
+      </View>
+
       <TouchableOpacity
         className={`mt-auto py-3 rounded-full mb-3 ${
           isFormValid ? 'bg-blue-600' : 'bg-[#1e2c43]'
         }`}
-        disabled={!isFormValid}>
+        disabled={!isFormValid}
+        onPress={() => navigation.navigate('PersonalDetailsScreen')}>
         <Text
           className={`text-center font-sans ${
             isFormValid ? 'text-white' : 'text-gray-500'
           } font-sans text-lg`}>
-          Submit
+          Next
         </Text>
       </TouchableOpacity>
     </BaseRegisterScreen>
   );
-}
+};
 
 export default EmailRegisterScreen;
