@@ -6,6 +6,7 @@ import RegisterScreen from '../screens/RegisterScreen/RegisterScreen';
 import EmailRegisterScreen from '../screens/RegisterScreen/EmailRegisterScreen';
 import LoginScreen from '../screens/RegisterScreen/LoginScreen';
 import PersonalDetailsScreen from '../screens/RegisterScreen/PersonalDetailsScreen';
+import OnboardingScreen from '../screens/OnboardingScreen';
 
 export type RootStackParamList = {
   WelcomeScreen: undefined; // or other params if any
@@ -13,6 +14,7 @@ export type RootStackParamList = {
   EmailRegisterScreen: undefined;
   LoginScreen: undefined;
   PersonalDetailsScreen: undefined;
+  OnboardingScreen: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -32,6 +34,7 @@ function RootNavigator(): React.JSX.Element {
           name="PersonalDetailsScreen"
           component={PersonalDetailsScreen}
         />
+        <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

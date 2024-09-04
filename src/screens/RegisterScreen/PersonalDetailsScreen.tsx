@@ -116,7 +116,7 @@ const PersonalDetailsScreen: React.FC<typeof PersonalDetailsScreenProps> = ({
               isFormValid() ? 'bg-blue-600' : 'bg-[#1e2c43]'
             }`}
             disabled={!isFormValid()}
-            onPress={() => navigation.navigate('PersonalDetailsScreen')}>
+            onPress={() => navigation.navigate('OnboardingScreen')}>
             <Text
               className={`text-center font-sans ${
                 isFormValid() ? 'text-white' : 'text-gray-500'

@@ -49,7 +49,9 @@ const LoginScreen: React.FC<typeof LoginScreenProps> = ({navigation}) => {
           Forgot Password?
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity className="bg-blue-500 rounded-full py-2 mt-7 ">
+      <TouchableOpacity
+        className="bg-blue-500 rounded-full py-2 mt-7 "
+        onPress={() => navigation.navigate('OnboardingScreen')}>
         <Text className="text-center text-white font-sans text-lg">Login</Text>
       </TouchableOpacity>
       <View className="flex-1 justify-end items-center">
