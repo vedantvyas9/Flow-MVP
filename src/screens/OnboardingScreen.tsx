@@ -8,6 +8,9 @@ import {
   Image,
   Dimensions,
 } from 'react-native';
+import {createScreenProps} from '../navigation/utils';
+
+const OnboardingScreenProps = createScreenProps('OnboardingScreen');
 
 const {width} = Dimensions.get('window');
 
@@ -44,7 +47,9 @@ const slides = [
   },
 ];
 
-const OnboardingScreen = () => {
+const OnboardingScreen: React.FC<typeof OnboardingScreenProps> = ({
+  navigation,
+}) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const flatListRef = useRef<FlatList>(null);
 
@@ -61,7 +66,8 @@ const OnboardingScreen = () => {
       <Image
         source={item.uri}
         //@ts-ignore
-        style={{width: width, height: '75%%'}}
+        // eslint-disable-next-line react-native/no-inline-styles
+        style={{width: width, height: '75%'}}
         resizeMode="contain"
       />
       <Text className="text-white text-2xl font-[poppins-semibold] mt-4">
@@ -87,7 +93,9 @@ const OnboardingScreen = () => {
           ) : (
             <TouchableOpacity
               className="bg-blue-500 rounded-full w-fit"
-              onPress={() => {}}>
+              onPress={() => {
+                navigation.replace('TabNavigator');
+              }}>
               <Text className="text-center text-white font-[poppins-semibold] text-lg mt-1 mb-1 ml-2 mr-2">
                 Next
               </Text>
