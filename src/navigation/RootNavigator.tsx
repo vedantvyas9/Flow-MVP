@@ -8,6 +8,7 @@ import LoginScreen from '../screens/RegisterScreen/LoginScreen';
 import PersonalDetailsScreen from '../screens/RegisterScreen/PersonalDetailsScreen';
 import OnboardingScreen from '../screens/OnboardingScreen';
 import TabNavigator from './TabNavigator';
+import CameraTabNavigator from './CameraTabNavigator';
 
 export type RootStackParamList = {
   WelcomeScreen: undefined; // or other params if any
@@ -17,6 +18,8 @@ export type RootStackParamList = {
   PersonalDetailsScreen: undefined;
   OnboardingScreen: undefined;
   TabNavigator: undefined;
+  ProfileScreen: undefined;
+  CameraTabNavigator: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -38,6 +41,10 @@ function RootNavigator(): React.JSX.Element {
         />
         <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
         <Stack.Screen name="TabNavigator" component={TabNavigator} />
+        <Stack.Screen
+          name="CameraTabNavigator"
+          component={CameraTabNavigator}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
